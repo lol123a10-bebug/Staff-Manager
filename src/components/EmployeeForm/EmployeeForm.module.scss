@@ -1,0 +1,58 @@
+.EmployeeForm {
+  font-size: 14px;
+  @media (min-width: 40rem) {
+    font-size: 1rem;
+  }
+  &__controls {
+    display: grid;
+    grid-template-columns: 0.35fr 1fr;
+    grid-gap: 1rem 0.5rem;
+    align-items: center;
+    @media (min-width: 40rem) {
+      grid-gap: 1rem 2rem;
+    }
+    & label {
+      user-select: none;
+    }
+    & input,
+    select {
+      padding: 0.5rem 0.5rem;
+      font-size: inherit;
+      &:focus {
+        &:invalid {
+          background-color: rgb(224, 168, 162);
+          border-color: salmon;
+        }
+      }
+      &:not([type="radio"]) {
+        width: 100%;
+      }
+    }
+    // & input:not([type="date"]) {
+    //   text-transform: capitalize;
+    // }
+  }
+  &__radios {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: 40rem) {
+      display: block;
+    }
+    & span {
+      &:last-of-type {
+        padding-top: 0.5rem;
+        @media (min-width: 40rem) {
+          padding: 0;
+        }
+      }
+    }
+  }
+  &__buttons {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    & button {
+      margin: 0 1rem;
+    }
+  }
+}

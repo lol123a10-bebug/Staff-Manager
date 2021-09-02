@@ -1,0 +1,48 @@
+.Employee {
+  padding: 0 1rem;
+  padding-top: 1.5rem;
+  max-width: 30rem;
+  margin: auto;
+  font-size: 0.8rem;
+  position: relative;
+  @media (min-width: 30rem) {
+    font-size: 1rem;
+  }
+  &__form {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    grid-row-gap: 1rem;
+    align-items: center;
+    & select,
+    input {
+      font-size: inherit;
+      padding: 0.25rem 0.25rem;
+    }
+  }
+  &__buttons {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    & button {
+      font-size: 0.8rem;
+      min-width: 6.5rem;
+      margin: 0 1rem;
+      @media (min-width: 40rem) {
+        font-size: 1rem;
+        min-width: 8rem;
+      }
+    }
+  }
+  &__error {
+    position: absolute;
+    background-color: salmon;
+    padding: 1rem 1.5rem;
+    bottom: -10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+}

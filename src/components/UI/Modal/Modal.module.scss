@@ -1,0 +1,14 @@
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 20rem;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: auto;
+  @media (min-width: 40rem) {
+    width: 30rem;
+  }
+}

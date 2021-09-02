@@ -1,0 +1,10 @@
+.StaffInfo {
+  max-width: 30rem;
+  margin: auto;
+  &__gender {
+    & span {
+      display: block;
+      padding-top: 1rem;
+    }
+  }
+}

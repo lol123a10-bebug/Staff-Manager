@@ -1,0 +1,24 @@
+.Navigation {
+  background-color: var(--primary);
+  &__list {
+    display: flex;
+    font-size: 0.875rem;
+    @media (min-width: 40rem) {
+      font-size: 1rem;
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    background-color: var(--primary);
+    color: #fff;
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      filter: brightness(110%);
+    }
+  }
+}

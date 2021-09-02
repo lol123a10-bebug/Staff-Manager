@@ -1,0 +1,75 @@
+.Staff {
+  padding: 0 1rem;
+  position: relative;
+  max-width: 60rem;
+  margin: auto;
+  &__list {
+    display: grid;
+    grid-row-gap: 1rem;
+    @media (min-width: 40rem) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1rem;
+    }
+    @media (min-width: 60rem) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  &__item {
+    padding-top: 2rem;
+    & div {
+      display: grid;
+      grid-template-columns: 0.5fr 0.75fr;
+      grid-row-gap: 1rem;
+      align-items: center;
+    }
+  }
+  &__filter {
+    padding: 1rem 0;
+    display: grid;
+    grid-row-gap: 0.5rem;
+    @media (min-width: 40rem) {
+      grid-template-columns: 1fr 1fr 0.5fr;
+      grid-column-gap: 0.5rem;
+      max-width: 40rem;
+      margin: auto;
+    }
+    @media (min-width: 60rem) {
+      max-width: 60rem;
+    }
+    &_inner {
+      @media (min-width: 40rem) {
+        display: flex;
+        align-items: center;
+      }
+      & label {
+        display: block;
+        padding-bottom: 0.25rem;
+        @media (min-width: 40rem) {
+          padding-right: 0.5rem;
+          padding-bottom: 0;
+        }
+      }
+    }
+    & select {
+      width: 100%;
+      padding: 0.5rem 0.45rem;
+      font-size: 1rem;
+      appearance: none;
+      border-radius: var(--border-radius);
+    }
+  }
+
+  &__toggler {
+    max-width: 10rem;
+  }
+
+  &__buttons {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    & button {
+      min-width: 6rem;
+      margin: 0 1rem;
+    }
+  }
+}
