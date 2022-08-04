@@ -8,7 +8,7 @@ import {
   removeData,
   selectStaffById,
   updateData,
-} from "../../store/staff/staff";
+} from "../../store/slices/staff/staff";
 import classes from "./Employee.module.scss";
 
 const Employee = () => {

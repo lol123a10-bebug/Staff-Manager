@@ -3,7 +3,7 @@ import Dashboard from "./views/Dashboard/Dashboard";
 import Staff from "./views/Staff/Staff";
 import Employee from "./views/Employee/Employee";
 import Navigation from "./components/Navigation/Navigation";
-import { fetchData, isError, statusState } from "./store/staff/staff";
+import { fetchData, isError, statusState } from "./store/slices/staff/staff";
 import Spinner from "./components/UI/Spinner/Spinner";
 import { Button } from "./components/UI/Button/Button";
 import { ReactNode, useEffect } from "react";

@@ -2,7 +2,7 @@ import {
   filterStaffByDepartment,
   filterStaffByGender,
   selectAllStaff,
-} from "../../store/staff/staff";
+} from "../../store/slices/staff/staff";
 
 import { names } from "../models/names";
 

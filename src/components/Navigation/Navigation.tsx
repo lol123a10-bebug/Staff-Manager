@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
 import { useAppDispatch } from "../../utils/hooks/hooks";
-import { showModal } from "../../store/staff/staff";
+import { showModal } from "../../store/slices/staff/staff";
 import classes from "./Navigation.module.scss";
 
 const Navigation = () => {
