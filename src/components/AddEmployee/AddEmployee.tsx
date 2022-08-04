@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../utils/hooks/hooks";
 import { addData, closeModal } from "../../store/staff/staff";
 import Modal from "../UI/Modal/Modal";
 import classes from "./AddEmployee.module.scss";

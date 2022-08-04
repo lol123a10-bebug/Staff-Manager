@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { names } from "../../interfaces/names";
+import { names } from "../../utils/models/names";
 import { Button } from "../UI/Button/Button";
-import { handleChange, capitalizeText } from "../../utility/utils";
+import { handleChange, capitalizeText } from "../../utils/helpers";
 
 import classes from "./EmployeeForm.module.scss";
-import { IStaff } from "../../interfaces/staff";
+import { IStaff } from "../../utils/models/staff";
 
 interface IForm {
   initValues: IStaff;

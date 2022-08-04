@@ -1,11 +1,11 @@
-import { useStaffStatistic } from "../../store/staff/useStaffStatistic";
+import { useStaffStatistic } from "../../utils/hooks/useStaffStatistic";
 import classes from "./Staff.module.scss";
 import { Button } from "../../components/UI/Button/Button";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import { names } from "../../interfaces/names";
+import { names } from "../../utils/models/names";
 import { useEffect, useMemo, useState } from "react";
-import { IStaff } from "../../interfaces/staff";
-import { useFilteredStaff } from "../../store/hooks";
+import { IStaff } from "../../utils/models/staff";
+import { useFilteredStaff } from "../../utils/hooks/hooks";
 import StaffTable from "../../components/Staff/StaffTable";
 
 const Staff = () => {

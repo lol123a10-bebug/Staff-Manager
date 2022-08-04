@@ -8,7 +8,7 @@ import Spinner from "./components/UI/Spinner/Spinner";
 import { Button } from "./components/UI/Button/Button";
 import { ReactNode, useEffect } from "react";
 import AddEmployee from "./components/AddEmployee/AddEmployee";
-import { useAppDispatch, useAppSelector } from "./store/hooks";
+import { useAppDispatch, useAppSelector } from "./utils/hooks/hooks";
 
 const App = () => {
   const status = useAppSelector(statusState);

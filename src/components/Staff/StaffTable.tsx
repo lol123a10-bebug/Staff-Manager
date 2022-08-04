@@ -1,4 +1,4 @@
-import { IStaff } from "../../interfaces/staff";
+import { IStaff } from "../../utils/models/staff";
 import classes from "./StaffTable.module.scss";
 
 interface Props {

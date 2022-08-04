@@ -1,6 +1,6 @@
 import classes from "./Dashboard.module.scss";
 import { StaffInfo } from "../../components/Dashboard/staffInfo/staffInfo";
-import { useStaffStatistic } from "../../store/staff/useStaffStatistic";
+import { useStaffStatistic } from "../../utils/hooks/useStaffStatistic";
 
 const Dashboard = () => {
   const { staff, men, women, IT, Бухгалтерия, Маркетинг, avgYears } =
