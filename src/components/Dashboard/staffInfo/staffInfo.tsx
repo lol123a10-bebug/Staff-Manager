@@ -1,6 +1,6 @@
-import classes from "./staffInfo.module.scss";
+import classes from "./StaffInfo.module.scss";
 
-interface staffProps {
+interface Props {
   overall: number;
   men: number;
   women: number;
@@ -11,7 +11,7 @@ interface staffProps {
   className?: string;
 }
 
-export const StaffInfo = (props: staffProps) => {
+const StaffInfo = (props: Props) => {
   const { overall, men, women, Бухгалтерия, IT, Маркетинг, average } = props;
   return (
     <div className={`${classes.StaffInfo} Card ${props.className}`}>
@@ -45,3 +45,5 @@ export const StaffInfo = (props: staffProps) => {
     </div>
   );
 };
+
+export default StaffInfo;
