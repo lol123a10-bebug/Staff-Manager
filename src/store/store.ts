@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
-import staffSlice from "./slices/staff/staff";
+import staffReducer from "./slices/staff";
 
 const saga = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
-    staff: staffSlice,
+    staff: staffReducer,
   },
 
   middleware: [saga],

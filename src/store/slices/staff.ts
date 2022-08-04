@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IStaff, IStaffState } from "../../../utils/models/staff";
-import { RootState } from "../../store";
+import { IStaff, IStaffState } from "../../utils/models/staff";
+import { RootState } from "../store";
 
 export const fetchData = createAsyncThunk("staff/fetchData", async () => {
   const response = await axios.get("/staff.json");
