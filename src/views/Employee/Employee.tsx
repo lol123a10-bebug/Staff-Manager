@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import EmployeeForm from "../../components/EmployeeForm/EmployeeForm";
+import EmployeeForm from "../../components/Employee/EmployeeForm/EmployeeForm";
 import { IStaff } from "../../utils/models/staff";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/hooks";
 import {
