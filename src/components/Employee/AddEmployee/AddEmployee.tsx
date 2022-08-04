@@ -1,8 +1,8 @@
-import { useAppDispatch, useAppSelector } from "../../utils/hooks/hooks";
-import { addData, closeModal } from "../../store/staff/staff";
-import Modal from "../UI/Modal/Modal";
+import { useAppDispatch, useAppSelector } from "../../../utils/hooks/hooks";
+import Modal from "../../UI/Modal/Modal";
 import classes from "./AddEmployee.module.scss";
 import EmployeeForm from "../EmployeeForm/EmployeeForm";
+import { staffActions } from "../../../store/slices/staff";
 
 const AddEmployee = () => {
   const modalState = useAppSelector((state) => state.staff.modalState);
@@ -18,24 +18,24 @@ const AddEmployee = () => {
     date: "",
   };
 
-  const ModalCloseHandler = () => {
-    dispatch(closeModal());
+  const handleModalToggle = () => {
+    dispatch(staffActions.toggleModal());
   };
 
-  const submitHandler = (data) => {
-    dispatch(addData(data));
-    ModalCloseHandler();
+  const handleSubmit = (data) => {
+    dispatch(staffActions.addEmployee(data));
+    handleModalToggle();
   };
 
   return (
     <>
       {modalState && (
-        <Modal close={ModalCloseHandler}>
+        <Modal close={handleModalToggle}>
           <div className={classes.AddEmployee}>
             <EmployeeForm
               initValues={initValues}
-              cancelButton={ModalCloseHandler}
-              submitButton={submitHandler}
+              cancelButton={handleModalToggle}
+              submitButton={handleSubmit}
               maxDate="2010-01-01"
               minDate="1900-01-01"
             />

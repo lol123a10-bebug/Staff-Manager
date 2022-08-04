@@ -3,28 +3,26 @@ import Dashboard from "./views/Dashboard/Dashboard";
 import Staff from "./views/Staff/Staff";
 import Employee from "./views/Employee/Employee";
 import Navigation from "./components/Navigation/Navigation";
-import { fetchData, isError, statusState } from "./store/slices/staff";
 import Spinner from "./components/UI/Spinner/Spinner";
 import { Button } from "./components/UI/Button/Button";
 import { ReactNode, useEffect } from "react";
 import AddEmployee from "./components/Employee/AddEmployee/AddEmployee";
 import { useAppDispatch, useAppSelector } from "./utils/hooks/hooks";
+import { isError } from "./utils/hooks/useStaffStatistic";
+import { staffActions } from "./store/slices/staff";
 
 const App = () => {
-  const status = useAppSelector(statusState);
   const error = useAppSelector(isError);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchData());
-    }
-  }, [status, dispatch]);
+    dispatch(staffActions.getStaff());
+  }, [dispatch]);
 
   let app: ReactNode;
 
-  if (status === "failed") {
+  if (false) {
     app = (
       <div className="App__error">
         <div className="Card">
@@ -35,11 +33,11 @@ const App = () => {
     );
   }
 
-  if (status === "pending" || status === "idle") {
+  if (false) {
     app = <Spinner />;
   }
 
-  if (status === "success") {
+  if (true) {
     app = (
       <Switch>
         <Redirect from="/" to="/dashboard" exact />

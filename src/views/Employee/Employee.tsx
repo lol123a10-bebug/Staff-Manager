@@ -4,18 +4,14 @@ import { useHistory, useParams } from "react-router-dom";
 import EmployeeForm from "../../components/Employee/EmployeeForm/EmployeeForm";
 import { IStaff } from "../../utils/models/staff";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks/hooks";
-import {
-  removeData,
-  selectStaffById,
-  updateData,
-} from "../../store/slices/staff";
+
 import classes from "./Employee.module.scss";
+import { selectStaffById } from "../../utils/hooks/useStaffStatistic";
+import { staffActions } from "../../store/slices/staff";
 
 const Employee = () => {
   const { id } = useParams<{ id: string }>();
-  const employee = useAppSelector((state) =>
-    selectStaffById(state, id)
-  ) as IStaff;
+  const employee = useAppSelector((state) => selectStaffById(state, id)) as IStaff;
   const dispatch = useAppDispatch();
   const history = useHistory();
 
@@ -38,15 +34,15 @@ const Employee = () => {
   };
 
   const submitButtonHandler = async (data) => {
-    await dispatch(updateData({ id, ...data }));
+    await dispatch(staffActions.editEmployee({ id, ...data }));
   };
 
   const editButtonHandler = () => {
     setEditMode(true);
   };
 
-  const removeButtonHandler = async () => {
-    await dispatch(removeData(id));
+  const removeButtonHandler = () => {
+    dispatch(staffActions.removeEmployee(id));
     history.push("/staff");
   };
 
