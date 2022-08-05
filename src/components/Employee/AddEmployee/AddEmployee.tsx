@@ -1,12 +1,12 @@
-import { useAppDispatch, useAppSelector } from "../../../utils/hooks/hooks";
+import { useDispatch, useSelector } from "../../../utils/hooks/hooks";
 import Modal from "../../UI/Modal/Modal";
 import classes from "./AddEmployee.module.scss";
 import EmployeeForm from "../EmployeeForm/EmployeeForm";
 import { staffActions } from "../../../store/slices/staff";
 
 const AddEmployee = () => {
-  const modalState = useAppSelector((state) => state.staff.modalState);
-  const dispatch = useAppDispatch();
+  const modalState = useSelector((state) => state.staff.modalState);
+  const dispatch = useDispatch();
 
   const initValues = {
     name: "",

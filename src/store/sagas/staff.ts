@@ -33,7 +33,6 @@ function* addEmployee(action) {
 }
 
 function* editEmployee(action) {
-  console.log(action);
   yield call(StaffApi.editEmployee, action.payload);
 }
 

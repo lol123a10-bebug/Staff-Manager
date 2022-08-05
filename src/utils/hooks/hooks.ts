@@ -1,4 +1,4 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import * as RR from "react-redux";
 import type { RootState, AppDispatch } from "../../store/store";
 
 export const useFilteredStaff = (data) => {
@@ -18,5 +18,5 @@ export const useFilteredStaff = (data) => {
   return staff;
 };
 
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useDispatch = () => RR.useDispatch<AppDispatch>();
+export const useSelector: RR.TypedUseSelectorHook<RootState> = RR.useSelector;

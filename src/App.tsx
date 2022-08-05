@@ -7,14 +7,14 @@ import Spinner from "./components/UI/Spinner/Spinner";
 import { Button } from "./components/UI/Button/Button";
 import { ReactNode, useEffect } from "react";
 import AddEmployee from "./components/Employee/AddEmployee/AddEmployee";
-import { useAppDispatch, useAppSelector } from "./utils/hooks/hooks";
+import { useDispatch, useSelector } from "./utils/hooks/hooks";
 import { isError } from "./utils/hooks/useStaffStatistic";
 import { staffActions } from "./store/slices/staff";
 
 const App = () => {
-  const error = useAppSelector(isError);
+  const error = useSelector(isError);
 
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(staffActions.getStaff());

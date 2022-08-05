@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { NavLink } from "react-router-dom";
 import { staffActions } from "../../store/slices/staff";
-import { useAppDispatch } from "../../utils/hooks/hooks";
+import { useDispatch } from "../../utils/hooks/hooks";
 import classes from "./Navigation.module.scss";
 
 const Navigation = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const addEmployeeHandler = (event) => {
     event.preventDefault();
     dispatch(staffActions.toggleModal());

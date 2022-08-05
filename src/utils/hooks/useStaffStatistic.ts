@@ -3,20 +3,20 @@ import { useMemo } from "react";
 import { RootState } from "../../store/store";
 import { names } from "../models/names";
 
-import { useAppSelector } from "./hooks";
+import { useSelector } from "./hooks";
 
 export const useStaffStatistic = () => {
-  const staff = useAppSelector((state) => state.staff.staff);
+  const staff = useSelector((state) => state.staff.staff);
 
-  const men = useAppSelector((state) => filterStaffByGender(state, names.Мужчина));
+  const men = useSelector((state) => filterStaffByGender(state, names.Мужчина));
 
-  const women = useAppSelector((state) => filterStaffByGender(state, names.Женщина));
+  const women = useSelector((state) => filterStaffByGender(state, names.Женщина));
 
-  const Бухгалтерия = useAppSelector((state) => filterStaffByDepartment(state, names.Бухгалтерия));
+  const Бухгалтерия = useSelector((state) => filterStaffByDepartment(state, names.Бухгалтерия));
 
-  const Маркетинг = useAppSelector((state) => filterStaffByDepartment(state, names.Маркетинг));
+  const Маркетинг = useSelector((state) => filterStaffByDepartment(state, names.Маркетинг));
 
-  const IT = useAppSelector((state) => filterStaffByDepartment(state, names.IT));
+  const IT = useSelector((state) => filterStaffByDepartment(state, names.IT));
 
   const avgYears = useMemo(() => {
     const birthYears = staff.map((employee) => {
