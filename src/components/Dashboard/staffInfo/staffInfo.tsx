@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import classes from "./StaffInfo.module.scss";
 
 interface Props {
@@ -12,9 +13,10 @@ interface Props {
 }
 
 const StaffInfo = (props: Props) => {
-  const { overall, men, women, Бухгалтерия, IT, Маркетинг, average } = props;
+  const { overall, men, women, Бухгалтерия, IT, Маркетинг, average, className } = props;
+
   return (
-    <div className={`${classes.StaffInfo} Card ${props.className}`}>
+    <div className={clsx("Card", classes.StaffInfo, className)}>
       <p>
         <strong>Количество сотрудников: </strong>
         <span>{overall}</span>
