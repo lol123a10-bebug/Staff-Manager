@@ -10,9 +10,11 @@ specifiers:
   '@types/node': ^16.4.14
   '@types/react': ^18.0.15
   '@types/react-dom': ^18.0.6
+  '@types/react-redux': ^7.1.24
   '@types/react-router-dom': ^5.1.8
   '@vitejs/plugin-react': ^2.0.0
   axios: ^0.21.1
+  date-fns: ^2.29.1
   react: ^18.2.0
   react-custom-scrollbars: ^4.2.1
   react-dom: ^18.2.0
@@ -27,6 +29,7 @@ specifiers:
 dependencies:
   '@reduxjs/toolkit': 1.8.3_4wic3pw3dccvku2ikwp24gz4m4
   axios: 0.21.4
+  date-fns: 2.29.1
   react: 18.2.0
   react-custom-scrollbars: 4.2.1_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
@@ -45,6 +48,7 @@ devDependencies:
   '@types/node': 16.11.47
   '@types/react': 18.0.15
   '@types/react-dom': 18.0.6
+  '@types/react-redux': 7.1.24
   '@types/react-router-dom': 5.3.3
   '@vitejs/plugin-react': 2.0.0_vite@3.0.4
   typescript: 4.7.4
@@ -529,7 +533,6 @@ packages:
     dependencies:
       '@types/react': 18.0.15
       hoist-non-react-statics: 3.3.2
-    dev: false
 
   /@types/istanbul-lib-coverage/2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
@@ -574,7 +577,6 @@ packages:
       '@types/react': 18.0.15
       hoist-non-react-statics: 3.3.2
       redux: 4.2.0
-    dev: false
 
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
@@ -797,6 +799,11 @@ packages:
 
   /csstype/3.1.0:
     resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
+
+  /date-fns/2.29.1:
+    resolution: {integrity: sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -1127,7 +1134,6 @@ packages:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
     dependencies:
       react-is: 16.13.1
-    dev: false
 
   /immer/9.0.15:
     resolution: {integrity: sha512-2eB/sswms9AEUSkOm4SbV5Y7Vmt/bKRwByd52jfLkW4OLYeaTP3EEiJ9agqU0O/tq6Dk62Zfj+TJSqfm1rLVGQ==}
@@ -1383,7 +1389,6 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: false
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
@@ -1488,7 +1493,6 @@ packages:
     resolution: {integrity: sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==}
     dependencies:
       '@babel/runtime': 7.18.9
-    dev: false
 
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}

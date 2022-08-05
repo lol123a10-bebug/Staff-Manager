@@ -4,9 +4,7 @@ import type { RootState, AppDispatch } from "../../store/store";
 export const useFilteredStaff = (data) => {
   const { staff, department, gender } = data;
   if (department && gender) {
-    return staff
-      .filter((el) => el.gender === gender)
-      .filter((el) => el.department === department);
+    return staff.filter((el) => el.gender === gender).filter((el) => el.department === department);
   }
 
   if (!department && gender) {

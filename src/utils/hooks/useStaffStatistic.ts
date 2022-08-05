@@ -1,3 +1,5 @@
+import { getYear, subYears } from "date-fns";
+import { useMemo } from "react";
 import { RootState } from "../../store/store";
 import { names } from "../models/names";
 
@@ -16,23 +18,20 @@ export const useStaffStatistic = () => {
 
   const IT = useAppSelector((state) => filterStaffByDepartment(state, names.IT));
 
-  const avgYears = (() => {
-    const array: number[] = [];
-    for (const employee of staff) {
+  const avgYears = useMemo(() => {
+    const birthYears = staff.map((employee) => {
       const birthday = new Date(employee.date);
-      const diff = Date.now() - birthday.getTime();
-      const age_diff = new Date(diff);
-      const year = age_diff.getUTCFullYear();
-      const age = Math.abs(year - 1970);
-      array.push(age);
-    }
+      const age = subYears(new Date(), getYear(birthday));
 
-    const age = array.reduce((prevVal, curVal) => {
-      return prevVal + curVal;
+      return getYear(age);
+    });
+
+    const ageSum = birthYears.reduce((prev, curr) => {
+      return prev + curr;
     }, 0);
 
-    return Math.floor(age / staff.length);
-  })();
+    return Math.floor(ageSum / staff.length);
+  }, [staff]);
 
   return {
     staff,
@@ -54,7 +53,5 @@ export const filterStaffByGender = (state: RootState, gender: string) =>
 
 export const filterStaffByDepartment = (state: RootState, department: string) =>
   state.staff.staff.filter((emp) => emp.department === department);
-
-export const statusState = (state: RootState) => state.staff.status;
 
 export const isError = (state: RootState) => state.staff.error;
