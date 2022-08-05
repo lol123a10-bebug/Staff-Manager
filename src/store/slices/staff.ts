@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IError, IStaff } from "../../utils/models/staff";
+import { IError, IEmployee } from "../../utils/models/staff";
 
 type InitState = {
-  staff: IStaff[];
+  staff: IEmployee[];
   error: IError;
   modalState: boolean;
 };
@@ -20,14 +20,17 @@ const staff = createSlice({
     getStaff() {},
 
     setStaff(state, action) {
-      console.log(action);
-
       state.staff = action.payload;
     },
 
     addEmployee(_, payload: PayloadAction<any>) {},
 
-    editEmployee(_, payload: PayloadAction<any>) {},
+    editEmployee(state, action: PayloadAction<IEmployee>) {
+      // const employeeIndex = state.staff.findIndex((employee) => employee.id === action.payload.id);
+      // if (employeeIndex !== -1) {
+      //   state.staff[employeeIndex] = action.payload;
+      // }
+    },
 
     removeEmployee(_, payload: PayloadAction<string>) {},
 

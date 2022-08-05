@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import EmployeeForm from "../../components/Employee/EmployeeForm/EmployeeForm";
-import { IStaff } from "../../utils/models/staff";
 import { useDispatch, useSelector } from "../../utils/hooks/hooks";
 
 import classes from "./Employee.module.scss";
@@ -17,29 +16,13 @@ const Employee = () => {
 
   const [editMode, setEditMode] = useState(false);
 
-  const initValues = useMemo(() => {
-    if (employee)
-      return {
-        name: employee.name,
-        surname: employee.surname,
-        middleName: employee.middleName,
-        department: employee.department,
-        gender: employee.gender,
-        pos: employee.pos,
-        date: employee.date,
-      };
-  }, [employee]);
-
-  const handleCancel = () => {
-    setEditMode(false);
+  const handleToggle = () => {
+    setEditMode((isEdit) => !isEdit);
   };
 
   const handleSubmit = (data) => {
     dispatch(staffActions.editEmployee({ id, ...data }));
-  };
-
-  const handleEditClick = () => {
-    setEditMode(true);
+    handleToggle();
   };
 
   const handleRemove = () => {
@@ -51,11 +34,11 @@ const Employee = () => {
     <div className={classes.Employee}>
       {employee && (
         <EmployeeForm
-          cancelButton={handleCancel}
-          initValues={initValues!}
+          cancelButton={handleToggle}
+          initValues={employee}
           disabled={!editMode}
           submitButton={handleSubmit}
-          editButton={handleEditClick}
+          editButton={handleToggle}
           removeButton={handleRemove}
           Card
           maxDate="2010-01-01"

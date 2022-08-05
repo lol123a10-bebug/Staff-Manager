@@ -4,7 +4,7 @@ import { Button } from "../../components/UI/Button/Button";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { names } from "../../utils/models/names";
 import { useEffect, useMemo, useState } from "react";
-import { IStaff } from "../../utils/models/staff";
+import { IEmployee } from "../../utils/models/staff";
 import { useFilteredStaff } from "../../utils/hooks/hooks";
 import StaffTable from "../../components/Staff/StaffTable";
 
@@ -92,7 +92,7 @@ const Staff = () => {
       </div>
       {block ? (
         <ul className={classes.Staff__list}>
-          {paginatedData.map((employee: IStaff) => (
+          {paginatedData.map((employee: IEmployee) => (
             <li key={employee.id} className={`${classes.Staff__item} Card`}>
               <div>
                 <strong>Имя: </strong>

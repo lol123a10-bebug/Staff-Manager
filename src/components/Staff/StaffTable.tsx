@@ -1,8 +1,8 @@
-import { IStaff } from "../../utils/models/staff";
+import { IEmployee } from "../../utils/models/staff";
 import classes from "./StaffTable.module.scss";
 
 interface Props {
-  employees: IStaff[];
+  employees: IEmployee[];
   onPath: (id: string) => void;
 }
 

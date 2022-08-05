@@ -1,11 +1,11 @@
 import axios from "axios";
-import { IStaff } from "../models/staff";
+import { IEmployee } from "../models/staff";
 
 class StaffApi {
   async fetchStaff() {
     const { data } = await axios.get("/staff.json");
 
-    const array: IStaff[] = [];
+    const array: IEmployee[] = [];
     for (const item in data) {
       const obj = { ...data[item], id: item };
       array.push(obj);

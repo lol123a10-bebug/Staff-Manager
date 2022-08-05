@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { names } from "../../../utils/models/names";
 import { Button } from "../../UI/Button/Button";
 import { handleChange, capitalizeText } from "../../../utils/helpers";
 
 import classes from "./EmployeeForm.module.scss";
-import { IStaff } from "../../../utils/models/staff";
+import { IEmployee } from "../../../utils/models/staff";
 
 interface IForm {
-  initValues: IStaff;
+  initValues: IEmployee;
   Card?: boolean;
   disabled?: boolean;
   maxDate: string;
   minDate: string;
   cancelButton: () => void;
-  submitButton: (obj: IStaff) => void;
+  submitButton: (obj: IEmployee) => void;
   editButton?: () => void;
   removeButton?: () => void;
   className?: string;
@@ -33,47 +33,26 @@ const EmployeeForm = (props: IForm) => {
     className,
   } = props;
 
-  const [name, setName] = useState(initValues.name);
-  const [surname, setSurname] = useState(initValues.surname);
-  const [middleName, setMiddleName] = useState(initValues.middleName);
-  const [department, setDepartment] = useState(initValues.department);
-  const [gender, setGender] = useState(initValues.gender);
-  const [pos, setPos] = useState(initValues.pos);
-  const [date, setDate] = useState(initValues.date);
+  const [employee, setEmployee] = useState(initValues);
 
-  const initValue = () => {
-    setName(initValues.name);
-    setSurname(initValues.surname);
-    setMiddleName(initValues.middleName);
-    setDepartment(initValues.department);
-    setGender(initValues.gender);
-    setPos(initValues.pos);
-    setDate(initValues.date);
+  const resetEmployee = () => {
+    setEmployee(initValues);
   };
 
-  const cancelButtonHandler = () => {
+  const handleCancel = () => {
     cancelButton();
-    initValue();
+    resetEmployee();
   };
 
-  const submitHandler = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    submitButton({
-      name,
-      surname,
-      middleName,
-      department,
-      gender,
-      pos,
-      date,
-    });
-    initValue();
+
+    submitButton(employee);
+    resetEmployee();
   };
 
   const editButtonHandler = () => {
-    if (editButton) {
-      editButton();
-    }
+    if (editButton) editButton();
   };
 
   const removeButtonHandler = () => {
@@ -82,16 +61,16 @@ const EmployeeForm = (props: IForm) => {
     }
   };
 
-  const changeNameHandler = (e) => setName(capitalizeText(e.target.value));
-  const changeSurnameHandler = (e) => setSurname(capitalizeText(e.target.value));
-  const changeMiddlenameHandler = (e) => setMiddleName(capitalizeText(e.target.value));
-  const changeDepartmentHandler = (e) => setDepartment(capitalizeText(e.target.value));
-  const changeGenderHandler = (e) => setGender(capitalizeText(e.target.value));
-  const changePosHandler = (e) => setPos(capitalizeText(e.target.value));
-  const changeDateHandler = (e) => setDate(capitalizeText(e.target.value));
+  const handleChange = (field: keyof IEmployee) => (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setEmployee((employee) => ({ ...employee, [field]: e.target.value }));
+  };
+
+  useEffect(() => {
+    setEmployee(initValues);
+  }, [initValues]);
 
   return (
-    <form className={`${classes.EmployeeForm} ${disabled && "view"} ${className}`} onSubmit={submitHandler}>
+    <form className={`${classes.EmployeeForm} ${disabled && "view"} ${className}`} onSubmit={handleSubmit}>
       <div className={`${classes.EmployeeForm__controls} ${Card && "Card"}`}>
         <label>
           <strong>Имя:</strong>
@@ -99,8 +78,8 @@ const EmployeeForm = (props: IForm) => {
         <input
           required
           disabled={disabled}
-          onChange={(e) => handleChange(e, changeNameHandler)}
-          value={name}
+          onChange={handleChange("name")}
+          value={employee.name}
           type="text"
           maxLength={12}
           minLength={2}
@@ -111,8 +90,8 @@ const EmployeeForm = (props: IForm) => {
         <input
           required
           disabled={disabled}
-          onChange={(e) => handleChange(e, changeSurnameHandler)}
-          value={surname}
+          onChange={handleChange("surname")}
+          value={employee.surname}
           type="text"
           minLength={2}
           maxLength={12}
@@ -123,8 +102,8 @@ const EmployeeForm = (props: IForm) => {
         <input
           required
           disabled={disabled}
-          onChange={(e) => handleChange(e, changeMiddlenameHandler)}
-          value={middleName}
+          onChange={handleChange("middleName")}
+          value={employee.middleName}
           type="text"
           minLength={2}
           maxLength={12}
@@ -132,7 +111,7 @@ const EmployeeForm = (props: IForm) => {
         <label>
           <strong>Отдел:</strong>
         </label>
-        <select disabled={disabled} required onChange={changeDepartmentHandler} value={department}>
+        <select disabled={disabled} required onChange={handleChange("department")} value={employee.department}>
           <option value="" disabled hidden>
             Please Choose...
           </option>
@@ -149,11 +128,11 @@ const EmployeeForm = (props: IForm) => {
               required
               disabled={disabled}
               id={names.Мужчина}
-              checked={gender === names.Мужчина}
+              checked={employee.gender === names.Мужчина}
               name="gender"
               type="radio"
               value={names.Мужчина}
-              onChange={changeGenderHandler}
+              onChange={handleChange("gender")}
             />
             <label htmlFor={names.Мужчина}>{names.Мужчина}</label>
           </span>
@@ -165,8 +144,8 @@ const EmployeeForm = (props: IForm) => {
               name="gender"
               type="radio"
               value={names.Женщина}
-              onChange={changeGenderHandler}
-              checked={gender === names.Женщина}
+              onChange={handleChange("gender")}
+              checked={employee.gender === names.Женщина}
             />
             <label htmlFor={names.Женщина}>{names.Женщина}</label>
           </span>
@@ -177,8 +156,8 @@ const EmployeeForm = (props: IForm) => {
         <input
           required
           disabled={disabled}
-          onChange={(e) => handleChange(e, changePosHandler)}
-          value={pos}
+          onChange={handleChange("pos")}
+          value={employee.pos}
           type="text"
           minLength={2}
           maxLength={12}
@@ -189,8 +168,8 @@ const EmployeeForm = (props: IForm) => {
         <input
           required
           disabled={disabled}
-          onChange={changeDateHandler}
-          value={date}
+          onChange={handleChange("date")}
+          value={employee.date}
           type="date"
           max={maxDate}
           min={minDate}
@@ -207,7 +186,7 @@ const EmployeeForm = (props: IForm) => {
         </div>
       ) : (
         <div className={classes.EmployeeForm__buttons}>
-          <Button onClick={cancelButtonHandler} type="button">
+          <Button onClick={handleCancel} type="button">
             Cancel
           </Button>
           <Button type="submit">Accept</Button>

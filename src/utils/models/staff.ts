@@ -1,4 +1,4 @@
-export interface IStaff {
+export interface IEmployee {
   id?: string;
   name: string;
   middleName: string;
@@ -14,7 +14,7 @@ export type IStatus = "idle" | "success" | "failed" | "pending";
 export type IError = null | string | undefined;
 
 export interface IStaffState {
-  staff: IStaff[];
+  staff: IEmployee[];
   status: IStatus;
   error: IError;
   modalState: boolean;
