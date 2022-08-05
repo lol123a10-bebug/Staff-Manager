@@ -27,13 +27,9 @@ const staff = createSlice({
 
     addEmployee(_, payload: PayloadAction<any>) {},
 
-    editEmployee(_, payload: PayloadAction<any>) {
-      console.log(payload);
-    },
+    editEmployee(_, payload: PayloadAction<any>) {},
 
-    removeEmployee(_, payload: PayloadAction<string>) {
-      console.log(payload);
-    },
+    removeEmployee(_, payload: PayloadAction<string>) {},
 
     toggleModal(state) {
       state.modalState = !state.modalState;

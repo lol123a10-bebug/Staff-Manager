@@ -3,10 +3,19 @@ import StaffApi from "../../utils/api/StaffApi";
 import { staffActions } from "../slices/staff";
 
 function* staffWatcher() {
-  yield takeEvery(staffActions.getStaff.type, getStaff);
   yield takeEvery(staffActions.addEmployee.type, addEmployee);
   yield takeEvery(staffActions.editEmployee.type, editEmployee);
   yield takeEvery(staffActions.removeEmployee.type, removeEmployee);
+
+  yield takeEvery(
+    [
+      staffActions.getStaff.type,
+      staffActions.addEmployee.type,
+      staffActions.editEmployee.type,
+      staffActions.removeEmployee.type,
+    ],
+    getStaff
+  );
 }
 
 export default staffWatcher;
@@ -21,16 +30,13 @@ function* addEmployee(action) {
   const { payload } = action;
 
   yield call(StaffApi.addEmployee, payload);
-  yield put(staffActions.getStaff());
 }
 
 function* editEmployee(action) {
   console.log(action);
   yield call(StaffApi.editEmployee, action.payload);
-  yield put(staffActions.getStaff());
 }
 
 function* removeEmployee(action) {
   yield call(StaffApi.removeEmployee, action.payload);
-  yield put(staffActions.getStaff());
 }
